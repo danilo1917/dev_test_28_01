@@ -6,8 +6,63 @@ def calculator(consumption: list, distributor_tax: float, tax_type: str) -> tupl
     monthly_savings = 0
     applied_discount = 0
     coverage = 0
+    desconto = 0
+    soma = 0
+    for i in consumption:
+    	soma+=i
 
-    # your code here #
+    media = soma/len(consumption)
+
+
+    if media<10000:
+    	coverage = 0.90
+    	if tax_type == "Industrial":
+    		applied_discount = 0.12
+    		desconto = applied_discount*coverage*media*distributor_tax
+    	elif tax_type == "Residencial":
+    		applied_discount = 0.18
+    		desconto = applied_discount*media*distributor_tax*coverage
+    	elif tax_type == "Comercial":
+    		applied_discount = 0.16
+    		desconto = applied_discount*media*distributor_tax*coverage
+
+    elif media>20000:
+    	coverage = 0.99
+    	if tax_type == "Industrial":
+    		applied_discount = 0.18
+    		desconto = applied_discount*media*coverage*distributor_tax
+
+    	elif tax_type == "Residencial":
+    		applied_discount = 0.25
+    		desconto = applied_discount*coverage*media*distributor_tax
+
+    	elif tax_type == "Comercial":
+    		applied_discount = 0.22
+    		desconto = applied_discount*coverage*media*distributor_tax
+    else:
+    	coverage = 0.95
+    	if tax_type == "Industrial":
+    		applied_discount =0.15
+    		desconto = applied_discount*coverage*media*distributor_tax
+
+    	elif tax_type == "Residencial":
+    		applied_discount = 0.22
+    		desconto = applied_discount*coverage*media*distributor_tax
+
+    	elif tax_type == "Comercial":
+    		applied_discount = 0.18
+    		desconto = applied_discount*coverage*media*distributor_tax
+
+    		
+    annual_savings = desconto*12
+    monthly_savings = desconto
+
+    print(
+        round(annual_savings, 2),
+        round(monthly_savings, 2),
+        applied_discount,
+        coverage,
+    )
 
     return (
         round(annual_savings, 2),
@@ -15,6 +70,7 @@ def calculator(consumption: list, distributor_tax: float, tax_type: str) -> tupl
         applied_discount,
         coverage,
     )
+
 
 
 if __name__ == "__main__":
