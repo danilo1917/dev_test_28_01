@@ -18,40 +18,40 @@ def calculator(consumption: list, distributor_tax: float, tax_type: str) -> tupl
     	coverage = 0.90
     	if tax_type == "Industrial":
     		applied_discount = 0.12
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*coverage*media*distributor_tax
     	elif tax_type == "Residencial":
     		applied_discount = 0.18
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*media*distributor_tax*coverage
     	elif tax_type == "Comercial":
     		applied_discount = 0.16
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*media*distributor_tax*coverage
 
     elif media>20000:
     	coverage = 0.99
     	if tax_type == "Industrial":
     		applied_discount = 0.18
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*media*coverage*distributor_tax
 
     	elif tax_type == "Residencial":
     		applied_discount = 0.25
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*coverage*media*distributor_tax
 
     	elif tax_type == "Comercial":
     		applied_discount = 0.22
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*coverage*media*distributor_tax
     else:
     	coverage = 0.95
     	if tax_type == "Industrial":
     		applied_discount =0.15
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*coverage*media*distributor_tax
 
     	elif tax_type == "Residencial":
     		applied_discount = 0.22
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*coverage*media*distributor_tax
 
     	elif tax_type == "Comercial":
     		applied_discount = 0.18
-    		desconto = applied_discount*media*distributor_tax
+    		desconto = applied_discount*coverage*media*distributor_tax
 
     		
     annual_savings = desconto*12
